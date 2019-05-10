@@ -1,0 +1,76 @@
+-- №1
+Select name
+FROM public."Departments" ORDER BY id DESC;
+
+-- №2
+Select name,rating
+From public."Group";
+
+-- №3
+Select surname,
+salary/premium * 100 as percent_s_pr,
+(salary)/(premium + salary) * 100 as percent_s_s_all
+FROM public."Teachers";
+
+-- №4 Конкатенация строк
+SELECT '“The dean of faculty '|| name ||' is '|| dean || '.”'  as zsd
+FROM public."Faculties";
+
+-- №5
+SELECT surname 
+FROM public."Teachers" t
+WHERE t.salary > '1050' 
+AND	t.is_professor = '1';
+
+-- №6
+SELECT name
+FROM public."Departments" n
+WHERE n.financing >= '25000' or n.financing <= '11000';
+
+-- №7
+SELECT * 
+FROM public."Faculties" h
+WHERE h."name" NOT LIKE 'Computer Science';
+
+-- №8
+SELECT surname, "position" 
+FROM public."Teachers" g
+WHERE g.is_professor <> '1';
+
+-- №9
+SELECT * 
+FROM public."Teachers" f
+WHERE f.is_assistant = '1' 
+	AND f.premium >= '160' 
+	AND f.premium <= '550';
+	
+-- №10
+SELECT surname,salary
+FROM public."Teachers" f
+WHERE f.is_assistant = '1';
+
+-- №11
+SELECT surname, position
+FROM public."Teachers" f
+WHERE f.employment_date <= '01.01.2000';
+
+-- №12
+SELECT name as "Name of Department" 
+FROM public."Departments" s
+WHERE s."name" NOT LIKE 'Sofware Development'
+ORDER by s."name";
+
+-- №13
+SELECT surname
+FROM public."Teachers" gf
+WHERE gf.premium + gf.salary <= '1200';
+
+-- №14
+SELECT name 
+FROM public."Group" s
+WHERE s."year" = '5' AND s.rating >= '2' AND s.rating <= '4';
+
+-- №15
+SELECT * 
+FROM public."Teachers" s
+WHERE s.salary < '550' or s.premium < '200' AND s.is_assistant = '1';
